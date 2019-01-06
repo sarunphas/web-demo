@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+        {% load static %}
+    <div class="container"></div>
+        <a href="/"><button type="button" class="btn btn-info">HOME</button></a>
+        <center>
+        <a href="/"><button type="button" class="btn btn-info">NDII</button></a>
+        <a href="/"><button type="button" class="btn btn-info">STRESS</button></a>
+        <a href="/"><button type="button" class="btn btn-info">MODEL1</button></a>
+        <a href="/"><button type="button" class="btn btn-info">MODEL2</button></a>
+        <center>  
+    </div>
+            
+    <div class="row">
+            {% for image in image_list %}
+            <div class="col-sm-2">
+                <br>
+                <center>
+                        <a href="{% url 'images:get_image' image.name %}">
+                            <img src="{% static image.url %}" class="rounded mx-auto d-block" style='max-height:300px;'>
+                        </a>
+                        
+                        <a href="{% url 'images:get_image' image.name %}">{{image.name}}</a>
+                </center>
+
+            </div>
+            {% endfor %}
+    </div><hr>
+                 
+    <!-- {% for image in image_list %}
+    <li>
+        <a href="{% url 'images:get_image' image.name %}">
+            <img src="{% static image.url %}" style='max-height:300px;'>
+        </a>
+    </li>
+    <li><a href="{% url 'images:get_image' image.name %}">{{image.name}}</a></li>
+    {% endfor %} -->
+
+</body>
+
+</html>
